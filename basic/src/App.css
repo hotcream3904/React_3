@@ -1,19 +1,31 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	padding: 0 100px 0 100px;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  border: 2px soild grey;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid grey;
 }
 
-/*
-  display: lnline  >> a, span, img, button
-  display: block >> div, p, h1~6
-*/
+.input-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.to-do-list {
+	border: 2px solid grey;
+}
+
+.done-list {
+	border: 2px solid grey;
+}
+
+/* display: lnline  >> a, span, img, button
+  display: block >> div, p, h1~6 */
