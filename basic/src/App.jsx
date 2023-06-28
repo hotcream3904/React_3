@@ -1,25 +1,19 @@
-import React from "react";
 import "./App.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import Header from "components/Header";
+import InputContainer from "components/InputContainer";
+import ToDoList from "components/ToDoList";
 
 function App() {
-	const [todo, setTodo] = useState([
-		{ id: 1, title: "리액트 공부1", content: "투두리스트 만들기", set: false },
-		{ id: 2, title: "리액트 공부2", content: "투두리스트 만들기", set: false },
-		{ id: 3, title: "리액트 공부3", content: "투두리스트 만들기", set: false },
-		{ id: 4, title: "리액트 공부4", content: "투두리스트 만들기", set: false },
-	]);
-
+	const [todo, setTodo] = useState([]);
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
-
 	const inputTitleHandler = (event) => {
 		setTitle(event.target.value);
 	};
 	const inputContentHandler = (event) => {
 		setContent(event.target.value);
 	};
-
 	const todoAddButtonHandler = () => {
 		const newTodo = {
 			id: Date.now(),
@@ -80,52 +74,34 @@ function App() {
 
 	return (
 		<div className='container'>
-			<div className='header'>
-				<div>My Todo List</div>
-				<div>React</div>
-			</div>
-			<div className='input-container'>
-				<div className='input-content'>
-					제목 : <input type='text' value={title} onChange={inputTitleHandler}></input>
-					내용 : <input type='text' value={content} onChange={inputContentHandler}></input>
-				</div>
-				<button onClick={todoAddButtonHandler}>추가하기</button>
-			</div>
-			<div className='working'>
-				<p>Working...🔥</p>
-				<div className='to-do-list'>
-					{inProgressTodo.map((item) => {
-						return (
-							<div key={item.id} className="todo-card">
-								<h3>{item.title}</h3>
-								<div>{item.content}</div>
-								<div>
-									<button onClick={() => deleteTodoList(item.id)}>삭제하기</button>
-									<button onClick={() => completeTodoList(item.id)}>완료</button>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
-			<div className='done'>
-				<p>Done...🎉</p>
-				<div className='to-do-list'>
-					{successTodo.map((item) => {
-						return (
-							<div key={item.id} className="todo-card">
-								<h3>{item.title}</h3>
-								<div>{item.content}</div>
-								<div>
-									<button onClick={() => deleteTodoList(item.id)}>삭제하기</button>
-									<button onClick={() => cancelTodoList(item.id)}>취소</button>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
+			<Header />
+			<InputContainer
+				title={title}
+				inputTitleHandler={inputTitleHandler}
+				content={content}
+				inputContentHandler={inputContentHandler}
+				todoAddButtonHandler={todoAddButtonHandler}
+			/>
+
+			{/* working */}
+			<ToDoList
+				title='Working...🔥'
+				type={false}
+				deleteTodoList={deleteTodoList}
+				TwoButton={completeTodoList}
+				TwoTodo={inProgressTodo}
+			/>
+
+			{/* Done */}
+			<ToDoList
+				title='Done...🎉'
+				type={true}
+				deleteTodoList={deleteTodoList}
+				TwoButton={cancelTodoList}
+				TwoTodo={successTodo}
+			/>
 		</div>
 	);
 }
+
 export default App;

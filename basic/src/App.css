@@ -1,30 +1,75 @@
+@font-face {
+	font-family: 'GangwonEdu_OTFBoldA';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .container {
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	padding: 0 100px 0 100px;
+	margin: 0 auto;
+	/* margin-left: auto; //오른쪽으로 밀어넣을때 */
+	width: 1200px;
+	height: 800px;
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: x-large;
 }
 
 .header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 2px solid grey;
+	border: 2px solid palevioletred;
+	border-radius: 10px;
+	padding: 10px;
 }
 
 .input-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: pink;
+	padding: 30px;
+	border-radius: 10px;
 }
 
 .to-do-list {
-	border: 2px solid grey;
+	display: flex;
+	gap: 20px;
 }
 
-.done-list {
-	border: 2px solid grey;
+.todo-card {
+	border: 2px solid palevioletred;
+	width: 300px;
+	height: 200px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+}
+
+input {
+	margin-left: 20px;
+	margin-right: 40px;
+	border: none;
+	border-radius: 10px;
+	width: 150px;
+	height: 30px;
+}
+
+.button-todo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 20px;
+}
+
+button {
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: large;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid pink;
+	width: 130px;
+	height: 40px;
+	margin: 10px;
 }
 
 /* display: lnline  >> a, span, img, button
