@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ToDoList({title, type, deleteTodoList, TwoButton, TwoTodo}) {
+function ToDoList({text, type, deleteTodoList, TwoButton, TwoTodo}) {
     return (
 		<div>
-			<p>{title}</p>
+			<p>{text}</p>
 			<div className='to-do-list'>
 				{TwoTodo.map((item) => {
 					return (
@@ -23,3 +23,4 @@ function ToDoList({title, type, deleteTodoList, TwoButton, TwoTodo}) {
 }
 
 export default ToDoList
+
