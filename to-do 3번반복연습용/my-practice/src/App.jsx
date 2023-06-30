@@ -1,14 +1,21 @@
-import TestPage from './components/TestPage';
-import GlobalStyle from './components/GlobalStyle';
+import React, { useState } from 'react';
 
 function App() {
+  const [number, setNumber] = useState(0);
+
   return (
-    <>
-    <GlobalStyle/>
-    <TestPage title="제목입니다" contents="내용입니다"/>
-    </>
+    <div>
+      <div>Number State : {number}</div>
+      <button
+        onClick={() => {
+          setNumber((currentNum) => {
+            return currentNum + 1;
+          });
+        }}>
+        누르면 up
+      </button>
+    </div>
   );
 }
-
 
 export default App;
