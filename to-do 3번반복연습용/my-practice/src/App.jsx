@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react'
 
 function App() {
-  const [number, setNumber] = useState(0);
+
+useEffect(function() {
+    console.log('hello useEffect');
+})
 
   return (
-    <div>
-      <div>Number State : {number}</div>
-      <button
-        onClick={() => {
-          setNumber((currentNum) => {
-            return currentNum + 1;
-          });
-        }}>
-        누르면 up
-      </button>
-    </div>
-  );
+    <styledDiv>useEffect</styledDiv>
+  )
+
+          
+
 }
 
-export default App;
+export default App
