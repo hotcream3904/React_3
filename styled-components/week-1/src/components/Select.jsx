@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { styled } from "styled-components";
-import { StBox } from "./Button";
+
 function Select() {
 	const [selectBoxOne, setSelectBoxOne] = useState(false);
 	const [selectBoxTwo, setSelectBoxTwo] = useState(false);
+
 	const toggleSelectBoxOne = () => {
 		setSelectBoxOne(!selectBoxOne);
 	};
@@ -13,51 +14,55 @@ function Select() {
 	};
 
 	const languageList = ["리액트", "자바", "스프링", "리액트네이티브"];
-	const [fisrtLanguage, setfirstLanguage] = useState("리액트");
-	const firstLanguageClick = () => {
-		setfirstLanguage();
+	const [fisrtLanguage, setfirstLanguage] = useState("리액트"); //32 번줄 바꿀꺼야 ㅋㅋㅋㅋ
+	const firstLanguageClick = (e) => {
+		setfirstLanguage(e.target.innerHTML);
 	};
-	const [secondLanguage, setSecondLanguage] = useState("리액트");
-	const secondLanguageClick = () => {
-		setSecondLanguage();
+	const [secondLanguage, setSecondLanguage] = useState("리액트"); // 50번줄 바꿀꺼야 ㅋㅋㅋㅋ
+	const secondLanguageClick = (e) => {
+		setSecondLanguage(e.target.dataset.value);
 	};
 
 	return (
 		<StSelectBox>
 			<h1>Select</h1>
-			{selectBoxOne && (
-				<>
-					{languageList.map((item, index) => {
-						return (
-							<StChoiceBox key={index} onClick={() => firstLanguageClick(index)}>
-								{item}
-							</StChoiceBox>
-						);
-					})}
-				</>
-			)}
-			{selectBoxTwo && (
-				<>
-					{languageList.map((item, index) => {
-						return (
-							<StChoiceBox key={index} onClick={() => secondLanguageClick(index)}>
-								{item}
-							</StChoiceBox>
-						);
-					})}
-				</>
-			)}
-
-			<StBox>
-				<StSelect onClick={toggleSelectBoxOne}>
-					<p>{fisrtLanguage}</p>
-					<p>▼</p>
-				</StSelect>
-				<StSelect onClick={toggleSelectBoxTwo}>
-					<p>{secondLanguage}</p>
-					<p>▼</p>
-				</StSelect>
-			</StBox>
+			<StChoiceBoxContainer>
+				<FirstButton>
+					<StSelect onClick={toggleSelectBoxOne}>
+						<p>{fisrtLanguage}</p>
+						<p>▼</p>
+					</StSelect>
+					{selectBoxOne && (
+						<StChoiceBoxParent>
+							{languageList.map((item) => {
+								return (
+									<StChoiceBox key={item} onClick={firstLanguageClick}>
+										{/* onMouseEnter */}
+										{item}
+									</StChoiceBox>
+								);
+							})}
+						</StChoiceBoxParent>
+					)}
+				</FirstButton>
+				<SecondButton>
+					<StSelect onClick={toggleSelectBoxTwo}>
+						<p>{secondLanguage}</p>
+						<p>▼</p>
+					</StSelect>
+					{selectBoxTwo && (
+						<StChoiceBoxParent>
+							{languageList.map((item) => {
+								return (
+									<StChoiceBox key={item} data-value={item} onClick={secondLanguageClick}>
+										{item}
+									</StChoiceBox>
+								);
+							})}
+						</StChoiceBoxParent>
+					)}
+				</SecondButton>
+			</StChoiceBoxContainer>
 		</StSelectBox>
 	);
 }
@@ -68,6 +73,22 @@ const StSelectBox = styled.div`
 	height: 200px;
 	margin: 50px 10px 0 10px;
 	border: 2px solid rgb(196, 193, 193);
+	overflow: hidden;
+`;
+
+const StChoiceBoxContainer = styled.div`
+	display: flex;
+	gap: 20px;
+`;
+
+const FirstButton = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+const SecondButton = styled.div`
+	display: flex;
+	flex-direction: column;
 `;
 
 const StSelect = styled.button`
@@ -81,7 +102,21 @@ const StSelect = styled.button`
 	border: 1px solid rgb(196, 193, 193);
 `;
 
-const StChoiceBox = styled.button`
+const StChoiceBoxParent = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	height: 160px;
 	border: 1px solid rgb(196, 193, 193);
 	border-radius: 8px;
+`;
+
+const StChoiceBox = styled.button`
+	border: none;
+	height: 40px;
+	border-radius: 8px;
+	background-color: white;
+	&:hover {
+		background-color: #dcdcdc;
+	}
 `;
