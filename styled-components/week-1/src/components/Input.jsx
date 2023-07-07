@@ -5,7 +5,7 @@ import { StButton, StBox } from "./Button";
 
 function Input() {
 	const [name, setName] = useState("");
-	const [price, setPrice] = useState("");
+	const [price, setPrice] = useState("0");
 
 	const handleChange = (event) => {
 		const { id, value } = event.target;
@@ -19,11 +19,14 @@ function Input() {
 	};
 
 	const handleClick = () => {
+		if (name.trim() === "" && price.trim() === "0") {
+			return alert("이름과 가격 모두 입력해주세요.");
+		}
 		alert(`이름:${name}, 가격:${price.replaceAll(",", "")}`);
 	};
 
 	return (
-		<div>
+		<form>
 			<h1>Input</h1>
 			<StBox>
 				이름 <StInput type='text' id='이름' onChange={handleChange}></StInput>
@@ -32,7 +35,7 @@ function Input() {
 					저장
 				</StButton>
 			</StBox>
-		</div>
+		</form>
 	);
 }
 
