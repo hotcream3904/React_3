@@ -24,46 +24,50 @@ function Select() {
 	};
 
 	return (
-		<StSelectBox>
-			<h1>Select</h1>
-			<StChoiceBoxContainer>
-				<FirstButton>
-					<StSelect onClick={toggleSelectBoxOne}>
-						<p>{fisrtLanguage}</p>
-						<p>▼</p>
-					</StSelect>
-					{selectBoxOne && (
-						<StChoiceBoxParent>
-							{languageList.map((item) => {
-								return (
-									<StChoiceBox key={item} onClick={firstLanguageClick}>
-										{/* onMouseEnter */}
-										{item}
-									</StChoiceBox>
-								);
-							})}
-						</StChoiceBoxParent>
-					)}
-				</FirstButton>
-				<SecondButton>
-					<StSelect onClick={toggleSelectBoxTwo}>
-						<p>{secondLanguage}</p>
-						<p>▼</p>
-					</StSelect>
-					{selectBoxTwo && (
-						<StChoiceBoxParent>
-							{languageList.map((item) => {
-								return (
-									<StChoiceBox key={item} data-value={item} onClick={secondLanguageClick}>
-										{item}
-									</StChoiceBox>
-								);
-							})}
-						</StChoiceBoxParent>
-					)}
-				</SecondButton>
-			</StChoiceBoxContainer>
-		</StSelectBox>
+		<>
+			<Stddd>
+				{selectBoxOne && (
+					<StChoiceBoxParent>
+						{languageList.map((item) => {
+							return (
+								<StChoiceBox key={item} onClick={firstLanguageClick}>
+									{/* onMouseEnter */}
+									{item}
+								</StChoiceBox>
+							);
+						})}
+					</StChoiceBoxParent>
+				)}
+			</Stddd>
+			<StSelectBox>
+				<h1>Select</h1>
+				<StChoiceBoxContainer>
+					<FirstButton>
+						<StSelect onClick={toggleSelectBoxOne}>
+							<p>{fisrtLanguage}</p>
+							<p>▼</p>
+						</StSelect>
+					</FirstButton>
+					<SecondButton>
+						<StSelect onClick={toggleSelectBoxTwo}>
+							<p>{secondLanguage}</p>
+							<p>▼</p>
+						</StSelect>
+						{selectBoxTwo && (
+							<StChoiceBoxParent>
+								{languageList.map((item) => {
+									return (
+										<StChoiceBox key={item} data-value={item} onClick={secondLanguageClick}>
+											{item}
+										</StChoiceBox>
+									);
+								})}
+							</StChoiceBoxParent>
+						)}
+					</SecondButton>
+				</StChoiceBoxContainer>
+			</StSelectBox>
+		</>
 	);
 }
 
@@ -119,4 +123,10 @@ const StChoiceBox = styled.button`
 	&:hover {
 		background-color: #dcdcdc;
 	}
+`;
+
+const Stddd = styled.div`
+	position: absolute;
+	top: 680px;
+	left: 10px;
 `;

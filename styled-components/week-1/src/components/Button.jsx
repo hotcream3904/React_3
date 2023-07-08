@@ -7,7 +7,7 @@ function Button() {
 			<h1>Button</h1>
 			<StBox>
 				<StButton onClick={() => alert("버튼을 만들어보세요")} type='primary' bgColor={"green"}>
-					Large Primary Button
+					Large Primary Button 📯
 				</StButton>
 				<StButton type='medium' bgColor={"green"}>
 					Medium
@@ -18,7 +18,7 @@ function Button() {
 			</StBox>
 			<StBox>
 				<StButton onClick={() => prompt("어렵나요?")} type='primary' bgColor={"pink"}>
-					Large Negative Button
+					Large Negative Button 🛎️
 				</StButton>
 				<StButton type='medium' bgColor={"pink"}>
 					Medium
